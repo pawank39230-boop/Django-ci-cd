@@ -1,0 +1,27 @@
+.nav-link{
+colour:white !important;
+}
+
+.nav-link:hover{
+colour:yellow !important;
+background-colour:lightblue;
+border-radius:10px;
+}
+
+.navbar-brand:hover{
+colour:yellow !important;
+font-weight:bold
+}
+
+.mydivstyle:hover{
+box-shadow:0 0 20px 0 rgba(0,0,0,0.3);
+transform:translateY(-20px)
+}
+
+.dt-buttons {
+    gap: 5px;
+}
+
+.dataTables_filter {
+    margin-bottom: 10px;
+}

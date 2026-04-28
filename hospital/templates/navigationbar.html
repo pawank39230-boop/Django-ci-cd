@@ -1,0 +1,99 @@
+
+<html>
+<head>
+    {% load static %}
+    <title>Hospital Management system</title>
+<meta charset="utf-8">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<link rel="stylesheet" type ="text/css" href="{% static 'css/mystyle.css' %}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<!--datatable cdn start-->
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+<script src="https://cdn.datatables.net/2.0.8/js/dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/3.0.1/js/dataTables.buttons.min.js"></script>
+
+<script src="https://cdn.datatables.net/buttons/3.0.1/js/buttons.html5.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/3.0.1/js/buttons.print.min.js"></script>
+
+<!-- Required for Excel/PDF -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script>
+<link rel="stylesheet" href="https://cdn.datatables.net/2.0.8/css/dataTables.dataTables.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/buttons/3.0.1/css/buttons.dataTables.min.css">
+
+<script>
+$(document).ready(function () {
+    $('#example').DataTable({
+        dom: '<"row mb-3"<"col-md-6 d-flex align-items-center"B><"col-md-6 text-end"f>>rtip',
+        buttons: ['copy', 'csv', 'excel', 'pdf', 'print']
+    });
+});
+</script>
+
+
+
+
+<!--datatable cdn start-->
+
+
+</head>
+
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+  <div class="container">
+<a class=" navbar-brand" href="#">Hospital Management system</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#myMenu">
+<span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="myMenu">
+    <ul class="navbar-nav text-center ml-auto">
+      {% if not request.user.is_staff %}
+      <li class="nav-item"><a class="nav-link" href="{% url 'login' %}"><i class="fa-solid fa-house"></i> Home</a></li>
+      <li class="nav-item"><a class="nav-link" href="{% url 'about' %}"><i class="fa-solid fa-address-card"></i> About</a></li>
+      <li class="nav-item"><a class="nav-link" href="{% url 'contact' %}">Contact</a></li>
+        {% endif %}
+      {% if request.user.is_staff %}
+      <li class="nav-item"><a class="nav-link" href="{% url 'home' %}"><i class="fa-solid fa-house"></i> Home </a></li>
+      <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#"> Doctor </a>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="{% url 'add_doctor' %}">Add Doctor</a>
+        <a class="dropdown-item" href="{% url 'view_doctor' %}">View Doctor</a>
+        </div>
+      </li>
+
+      <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Patient</a>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="{% url 'add_patient' %}">Add Patient</a>
+        <a class="dropdown-item" href="{% url 'view_patient' %}">View Patient</a>
+        </div>
+      </li>
+
+      <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Appointment</a>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="{% url 'add_appointment' %}">Add Appointment</a>
+        <a class="dropdown-item" href="{% url 'view_appointment' %}">View Appointment</a>
+        </div>
+      </li>
+      <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Logout</a></li>
+
+      {% endif %}
+
+
+    </ul>
+  </div>
+  </div>
+</nav>
+{% block body %}
+
+{% endblock %}
+</html>

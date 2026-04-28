@@ -1,0 +1,38 @@
+
+{% extends 'navigationbar.html' %}
+{% load static %}
+
+{% block body %}
+
+<style>
+    .mydivstyle:hover{
+box-shadow:0 0 20px 0 rgba(0,0,0,0.3);
+transform:translateY(-20px)
+}
+</style>
+<div class="container" style ="margin-top:50px">
+<h2 class="text-center">Contact us</h2>
+<br><br>
+
+<div class="row mt-5 text-center">
+    <div class="col-lg-3 col-sm-6 mydivstyle">
+        <h4><i class="fas fa-phone-square"></i> Contact</h4>
+        <p class="mt-3 font-weight-bold"><a class="text-danger" href="tel:+91 7823066246">+91 7823066246</a></p>
+    </div>
+
+    <div class="col-lg-3  col-sm-6 mydivstyle">
+        <h4><i class="fas fa-envelope"></i> Send Email</h4>
+        <p class="mt-3 font-weight-bold"><a class="text-danger" href="mailto:pawank39230@gmail.com">pawank39230@gmail.com</a></p>
+    </div>
+
+    <div class="col-lg-3  col-sm-6 mydivstyle">
+        <h4><i class="fas fa-address-card"></i> Hospital Address</h4>
+        <p class="mt-3 font-weight-bold"><a class="text-danger" href="http://maps.googla.com/maps?q=Hurchandpur+Bhiwadi+Rajashthan+301019">Hurchandpur Bhiwadi Rajashthan 301019</a></p>
+    </div>
+
+     <div class="col-lg-3  col-sm-6 mydivstyle">
+        <h4><i class="fas fa-address-card"></i> Hospital Hours</h4>
+        <p class="mt-3 font-weight-bold">9:00 Am to 7:00 PM</p>
+    </div>
+</div>
+{% endblock %}

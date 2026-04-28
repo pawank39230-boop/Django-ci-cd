@@ -1,0 +1,92 @@
+{% extends 'navigationbar.html' %}
+{% load static %}
+{% block body %}
+
+<style>
+    body {
+        background: linear-gradient(135deg, #1e3c72, #2a5298);
+        height: 100vh;
+    }
+
+    .login-container {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .login-card {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(12px);
+        border-radius: 15px;
+        padding: 30px;
+        width: 100%;
+        max-width: 400px;
+        color: white;
+        box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+    }
+
+    .login-card input {
+        border-radius: 10px;
+    }
+
+    .login-card .btn {
+        border-radius: 10px;
+    }
+
+    .login-icon {
+        font-size: 60px;
+        text-align: center;
+        margin-bottom: 10px;
+    }
+</style>
+
+<div class="container" style="margin-top:50px; max-width:500px">
+
+    <!-- 🔷 User Icon -->
+    <div class="text-center mb-3">
+        <i class="fas fa-user-circle" style="font-size:60px; color:#007bff;"></i>
+    </div>
+
+    <h2 class="text-center mb-4">Admin Login</h2>
+
+    <!-- ✅ Success Message -->
+    {% if error == "no" %}
+    <div class="alert alert-success text-center">
+        Logged in successfully
+    </div>
+    <script>
+        setTimeout(function(){
+            window.location.href = "{% url 'home' %}";
+        }, 1500);
+    </script>
+    {% endif %}
+
+    <!-- ❌ Error Message -->
+    {% if error == "yes" %}
+    <div class="alert alert-danger text-center">
+        Invalid Login Credentials, Try Again
+    </div>
+    {% endif %}
+
+    <div class="card shadow p-4">
+        <form method="post">
+            {% csrf_token %}
+
+            <div class="form-group mb-3">
+                <label>Admin Name</label>
+                <input type="text" class="form-control" name="uname" placeholder="Enter username" required>
+            </div>
+
+            <div class="form-group mb-3">
+                <label>Admin Password</label>
+                <input type="password" class="form-control" name="pwd" placeholder="Enter password" required>
+            </div>
+
+            <input type="submit" value="Login" class="btn btn-primary w-100">
+        </form>
+    </div>
+
+</div>
+
+{% endblock %}
